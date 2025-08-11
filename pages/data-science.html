@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Science with Python - NexoraHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: #f9fafb;
+            color: #0f172a;
+        }
+
+        nav {
+            background: #0f172a;
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 a {
+            color: #22d3ee;
+            font-size: 1.8rem;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0F172A, #3B82F6);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .timeline {
+            border-left: 4px solid #22D3EE;
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 20px;
+            border-left: 6px solid #3B82F6;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 10px;
+            color: #0F172A;
+        }
+
+        .timeline-content ul {
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #e0f2fe;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .stat {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #374151;
+        }
+
+        .enroll-button {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .enroll-button:hover {
+            background: #2563eb;
+        }
+
+        .why-enroll {
+            background: linear-gradient(135deg, #e0f7ff, #ffffff);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .why-enroll h2 {
+            font-size: 2.5rem;
+            color: #0F172A;
+            margin-bottom: 10px;
+        }
+
+        .enroll-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .enroll-box {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            padding: 30px 25px;
+            max-width: 280px;
+            width: 100%;
+            border-top: 5px solid #22D3EE;
+            transition: transform 0.3s ease;
+        }
+
+        .enroll-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .enroll-box h4 {
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .enroll-box p {
+            color: #374151;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer h4 {
+            color: #22d3ee;
+        }
+
+        footer a {
+            color: #22d3ee;
+            text-decoration: none;
+        }
+
+        .counter {
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .enroll-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h1><a href="../index.html">NexoraHub</a></h1>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#enroll">Enroll</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Header -->
+    <header>
+        <h2>Data Science with Python</h2>
+        <p>Master Python for data analysis, visualization, machine learning, and build real-world data projects.</p>
+        <a href="https://forms.gle/6HzSEGUuzdB5tBwP9" class="enroll-button">Enroll Now</a>
+    </header>
+
+    <!-- Overview -->
+    <section class="section" id="overview">
+        <h3>Course Overview</h3>
+        <p>
+            The <strong>Data Science with Python</strong> course equips beginners with essential skills to analyze,
+            visualize,
+            and model data using Python. Learn libraries like NumPy, Pandas, Matplotlib, and Scikit-learn through
+            hands-on projects,
+            real datasets, and guided mentorship to become a job-ready data analyst or junior data scientist.
+        </p>
+    </section>
+
+
+    <!-- Curriculum -->
+    <section class="section" id="curriculum">
+        <h3>📚 Curriculum</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>Week 1–2: Python Foundations</h4>
+                    <ul>
+                        <li>Python Syntax & Data Types</li>
+                        <li>Control Flow, Functions, and Modules</li>
+                        <li>File Handling & Error Management</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>Week 3: Data Analysis with Pandas</h4>
+                    <ul>
+                        <li>DataFrames and Series</li>
+                        <li>Data Cleaning & Preprocessing</li>
+                        <li>Data Manipulation Techniques</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>Week 4: Data Visualization</h4>
+                    <ul>
+                        <li>Matplotlib & Seaborn Basics</li>
+                        <li>Customizing Charts</li>
+                        <li>Interactive Dashboards (Intro)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>Week 5–6: Statistics & ML Concepts</h4>
+                    <ul>
+                        <li>Descriptive & Inferential Statistics</li>
+                        <li>Linear Regression, Classification</li>
+                        <li>Model Evaluation Techniques</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>Week 7–8: Mini Project & Career Prep</h4>
+                    <ul>
+                        <li>Capstone Project (Real Dataset)</li>
+                        <li>Git & GitHub Workflow</li>
+                        <li>Interview Prep + Certification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Enroll -->
+    <section class="why-enroll">
+        <h2>🚀 Why Enroll in This Course?</h2>
+        <p class="section-subtitle">Thousands of students have chosen NexoraHub to kickstart their tech careers —
+            here's
+            why:</p>
+        <div class="enroll-cards">
+            <div class="enroll-box">
+                <div class="icon">👶</div>
+                <h4>Beginner Friendly</h4>
+                <p>No coding experience? No problem! We teach from scratch, step-by-step.</p>
+            </div>
+            <div class="enroll-box">
+                <div class="icon">🎥</div>
+                <h4>Live + Recorded Classes</h4>
+                <p>Attend live sessions and revisit recordings anytime, anywhere.</p>
+            </div>
+            <div class="enroll-box">
+                <div class="icon">💻</div>
+                <h4>Hands-on Projects</h4>
+                <p>Build real-world projects to strengthen your resume & portfolio.</p>
+            </div>
+            <div class="enroll-box">
+                <div class="icon">📜</div>
+                <h4>Course Completion Certificate</h4>
+                <p>Get a certificate after successful completion of the course.</p>
+            </div>
+            <div class="enroll-box">
+                <div class="icon">🧑‍🏫</div>
+                <h4>Expert Mentors</h4>
+                <p>Get guidance from industry professionals and doubt-solving support.</p>
+            </div>
+            <div class="enroll-box">
+                <div class="icon">💼</div>
+                <h4>Placement Support</h4>
+                <p>We help with resume building, mock interviews & job referrals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div>
+            <div class="stat counter" data-target="00">0</div>
+            <div class="stat-label">Students Enrolled</div>
+        </div>
+        <div>
+            <div class="stat counter" data-target="00">0</div>
+            <div class="stat-label">Certificates Issued</div>
+        </div>
+        <div>
+            <div class="stat counter" data-target="00">0</div>
+            <div class="stat-label">Students Placed</div>
+        </div>
+    </section>
+
+    <!-- Enroll -->
+    <section class="section" id="enroll">
+        <h3>Get Started Today</h3>
+        <p>Join the upcoming batch and launch your career in tech.</p>
+        <a href="https://forms.gle/6HzSEGUuzdB5tBwP9" class="enroll-button">Enroll Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        style="background: linear-gradient(to right, #0f172a, #1e3a8a); color: #ffffff; font-family: 'Roboto', sans-serif; padding: 60px 20px 30px;">
+
+        <div
+            style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start;">
+
+            <!-- 🎓 About NexoraHub -->
+            <div style="flex: 1 1 280px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">🎓 NexoraHub</h3>
+                <p style="font-size: 1.05em; line-height: 1.7;">
+                    Your gateway to future tech careers. Learn from experts, build real projects, and get
+                    placement-ready with practical tech skills.
+                </p>
+            </div>
+
+            <!-- 📈 Placement Highlights -->
+            <div style="flex: 1 1 220px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📈 Placement Highlights</h3>
+                <!---- <ul style="list-style: none; padding: 0; font-size: 1.05em; line-height: 2;">
+                    <li>✅ 0+ Students Placed</li>
+                    <li>🎯 0% Success Rate</li>
+                    <li>💼 MNC & Startups</li>-->
+                <li>📜 Industry Certification</li>
+                </ul>
+            </div>
+
+            <!-- 📞 Contact Info -->
+            <div style="flex: 1 1 200px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📞 Contact Us</h3>
+                <p style="margin: 10px 0;">📱 <strong>Phone:</strong><br>8074097330 / 7286842779</p>
+                <p>📧 <strong>Email:</strong><br><a href="mailto:nexorahub2025@gmail.com"
+                        style="color: #f3f4f6; text-decoration: none;">nexorahub2025@gmail.com</a></p>
+            </div>
+
+            <!-- 📲 Social Media -->
+            <div style="flex: 1 1 180px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📲 Follow Us</h3>
+                <a href="https://www.instagram.com/_nexorahub_/profilecard/?igsh=YWN1MWJiNGEzbDA2" target="_blank"
+                    style="display: block; margin-bottom: 8px; color: #f9fafb; text-decoration: none;">📷 Instagram</a>
+                <a href="https://youtube.com/@knowledge_knocks1?si=oEB4-2BWYy8uxoKK" target="_blank"
+                    style="display: block; margin-bottom: 8px; color: #f9fafb; text-decoration: none;">▶️ YouTube</a>
+            </div>
+
+        </div>
+
+        <!-- 👇 Divider -->
+        <div
+            style="border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; text-align: center; color: #cbd5e1; font-size: 0.95em;">
+            &copy; 2025 <strong>NexoraHub</strong> | Learn. Build. Grow. 🚀
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+
+</html>

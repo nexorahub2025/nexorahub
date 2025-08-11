@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexoraHub - Learn. Build. Grow.</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #111827;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: #0F172A;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #about {
+            padding: 100px 20px;
+            background-color: #f4f6f8;
+            color: #0F172A;
+        }
+
+        #about h2 {
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e3a8a;
+        }
+
+        /* Hamburger base styles */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* Responsive Nav */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #0F172A;
+                margin-top: 10px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 10px 0;
+                text-align: left;
+                padding-left: 20px;
+            }
+
+            nav ul li a {
+                font-size: 1.1em;
+            }
+        }
+
+
+        #about h3 {
+            color: #0F172A;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        #about h3::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background-color: #22D3EE;
+            left: 0;
+            top: 0;
+            border-radius: 3px;
+        }
+
+        #about p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        #about .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #about .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #about .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        #about .about-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        #about .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        nav h1 {
+            font-size: 1.7em;
+            color: #22D3EE;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #22D3EE;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0F172A, #1e3a8a);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 80px;
+        }
+
+        .header-text {
+            flex: 1;
+            animation: fadeInLeft 1.5s ease-in-out;
+        }
+
+        .header-text h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #22D3EE;
+        }
+
+        .header-text p {
+            font-size: 1.6em;
+            max-width: 600px;
+            color: #F9FAFB;
+        }
+
+        .highlight {
+            color: #22D3EE;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            font-size: 1.1em;
+            background: #22D3EE;
+            color: #0F172A;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            background: #F9FAFB;
+            color: #0F172A;
+        }
+
+        .header-image {
+            flex: 1;
+            animation: fadeInRight 1.5s ease-in-out;
+        }
+
+        .header-image img {
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-color: #1e3a8a;
+            padding: 10px;
+        }
+
+        .header-animation {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            z-index: 0;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: floatUp 6s infinite ease-in-out;
+        }
+
+        .circle.delay {
+            animation-delay: 2s;
+        }
+
+        .circle.delay2 {
+            animation-delay: 4s;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .course-card {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-left: 8px solid #3B82F6;
+            padding: 20px;
+            border-radius: 12px;
+            width: 260px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .course-card.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        footer {
+            background-color: #0F172A;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        footer a {
+            color: #22D3EE;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navbar Container */
+        .navbar {
+            background-color: #0056b3;
+            /* Blue */
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Inner Layout */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Text */
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Desktop Menu */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        /* Hamburger (Mobile Only) */
+        .hamburger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: #0056b3;
+                padding: 15px;
+                border-radius: 8px;
+                width: 180px;
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-menu li {
+                text-align: right;
+            }
+        }
+
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0.2;
+            }
+
+            50% {
+                transform: translateY(-60px);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h1>NexoraHub</h1>
+        <ul>
+            <!-- Hamburger -->
+            <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
+            </div>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#bootcamp">Bootcamp</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>NexoraHub</h1>
+                <p>Your Gateway to <span class="highlight">Future Tech Careers</span></p>
+                <a href="#bootcamp" class="cta-button">Enroll Now</a>
+            </div>
+            <div class="header-image">
+                <img src="images\2620034.jpg" alt="Student with Computer">
+            </div>
+        </div>
+        <div class="header-animation">
+            <div class="circle"></div>
+            <div class="circle delay"></div>
+            <div class="circle delay2"></div>
+        </div>
+    </header>
+    <section id="about" style="padding: 100px 20px; width: 100%; background: none;">
+        <h2
+            style="font-size: 3em; text-align: center; margin-bottom: 60px; color: #22D3EE; animation: fadeInDown 1s ease-in-out;">
+            About NexoraHub
+        </h2>
+
+        <div class="about-cards-container">
+            <!-- Who We Are -->
+            <div class="about-card card-blue">
+                <h3>Who We Are</h3>
+                <p>
+                    NexoraHub is a tech education platform built to empower students and beginners to succeed in the
+                    ever-evolving technology landscape. We offer live training, real-world projects, and guided
+                    mentorship to help you learn by doing.
+                </p>
+            </div>
+
+            <!-- Our Mission -->
+            <div class="about-card card-yellow">
+                <h3>Our Mission</h3>
+                <p>
+                    To democratize tech education by making it practical, affordable, and accessible to every student,
+                    especially from Tier-2 and Tier-3 colleges.
+                </p>
+            </div>
+
+            <!-- Our Vision -->
+            <div class="about-card card-purple">
+                <h3>Our Vision</h3>
+                <p>
+                    To become India's most trusted learning hub for students stepping into the tech world—where talent
+                    meets guidance, and ideas turn into impactful careers.
+                </p>
+            </div>
+        </div>
+
+        <style>
+            .about-cards-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .about-card {
+                flex: 1 1 300px;
+                padding: 30px;
+                border-radius: 20px;
+                color: #0F172A;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
+                animation: slideInUp 1s ease-in-out;
+            }
+
+            .about-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            }
+
+            .about-card h3 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+                border-left: 5px solid #0F172A;
+                padding-left: 12px;
+            }
+
+            .about-card p {
+                font-size: 1.1em;
+                line-height: 1.7;
+            }
+
+            .card-blue {
+                background: #e0f7fa;
+                border-left: 6px solid #06b6d4;
+            }
+
+            .card-yellow {
+                background: #fef3c7;
+                border-left: 6px solid #f59e0b;
+            }
+
+            .card-purple {
+                background: #ede9fe;
+                border-left: 6px solid #8b5cf6;
+            }
+
+            /* Hamburger base styles */
+            .menu-toggle {
+                display: none;
+                font-size: 2rem;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            /* Responsive Nav */
+            @media (max-width: 768px) {
+                nav {
+                    flex-wrap: wrap;
+                }
+
+                .menu-toggle {
+                    display: block;
+                }
+
+                nav ul {
+                    display: none;
+                    flex-direction: column;
+                    width: 100%;
+                    background-color: #0F172A;
+                    margin-top: 10px;
+                }
+
+                nav ul.show {
+                    display: flex;
+                }
+
+                nav ul li {
+                    padding: 10px 0;
+                    text-align: left;
+                    padding-left: 20px;
+                }
+
+                nav ul li a {
+                    font-size: 1.1em;
+                }
+            }
+
+            /* Animations */
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-40px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(40px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+
+        <!-- Optional scroll reveal effect -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const cards = document.querySelectorAll('.about-card');
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = 1;
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                cards.forEach(card => {
+                    card.style.opacity = 0;
+                    card.style.transform = 'translateY(40px)';
+                    observer.observe(card);
+                });
+            });
+        </script>
+
+    </section>
+
+
+
+
+
+    <section id="courses" style="padding: 100px 20px;  color: #0f172a;">
+        <h2 style="font-size: 3em; text-align: center; margin-bottom: 50px; color: #0f172a;">Courses We Offer</h2>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-bottom: 60px;">
+            <a class="course-card" href="pages\python-fullstack.html">Python Full
+                Stack</a>
+            <a class=" course-card" href="pages\data-science.html">Data Science
+                with Python</a>
+            <a class="course-card" href="pages\devops-cloud.html">DevOps & Cloud
+                Basics</a>
+            <a class="course-card" href="pages\ai.html">Artificial
+                Intelligence</a>
+            <a class="course-card" href="pages\web-development.html">Web
+                Development</a>
+            <a class="course-card" href="pages\git-github.html">Git & GitHub
+                Essentials</a>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number" data-target="00">0</div>
+                <p>Students Learning</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="00">0</div>
+                <p>Certificates Issued</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="00">0</div>
+                <p>Students Placed</p>
+            </div>
+        </div>
+
+        <style>
+            .course-card {
+                display: block;
+                width: 280px;
+                background: #f9fafb;
+                color: #0f172a;
+                padding: 25px;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                text-decoration: none;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                border-left: 6px solid #22D3EE;
+            }
+
+            .course-card:hover {
+                transform: translateY(-10px);
+                background: #e0f7fa;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            }
+
+            .stats-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 40px;
+                margin-top: 40px;
+            }
+
+            .stat-box {
+                background: #f1f5f9;
+                padding: 30px 50px;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            }
+
+            .stat-number {
+                font-size: 3em;
+                font-weight: bold;
+                color: #22D3EE;
+            }
+
+            .stat-box p {
+                font-size: 1.1em;
+                margin-top: 10px;
+            }
+        </style>
+
+        <script>
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / 100;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                // Start animation when in view
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCount();
+                            observer.unobserve(counter);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                observer.observe(counter);
+            });
+        </script>
+    </section>
+    <section id="bootcamp" style="background: #ffffff0e; padding: 100px 20px; border-top: 6px solid #22D3EE;">
+        <div
+            style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 60px;">
+
+            <!-- Left: Text Content -->
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="font-size: 3em; font-weight: 800; color: #0f172a; margin-bottom: 20px;">
+                    🚀 Kickstart Your Tech Journey in 3 Days!
+                </h2>
+                <p style="font-size: 1.25em; color: #374151; margin-bottom: 25px; line-height: 1.7;">
+                    <strong style="color: #22D3EE;">Tech Starter Camp 2025</strong> is a <strong>FREE 3-day
+                        bootcamp</strong> crafted for first-year B.Tech students who want to dive into programming and
+                    web development — no prior experience needed!
+                </p>
+
+                <ul
+                    style="list-style: none; padding: 0; font-size: 1.05em; line-height: 1.8; color: #111827; margin-bottom: 30px;">
+                    <li>📅 <strong>Dates:</strong> August 24–26, 2025</li>
+                    <li>💡 <strong>Day 1:</strong> Python Programming Basics</li>
+                    <li>🎨 <strong>Day 2:</strong> HTML & CSS – Web Designing</li>
+                    <li>🛠️ <strong>Day 3:</strong> Mini Project + Tech Career Roadmap</li>
+                    <li>🎁 <strong>Perks:</strong> Live Classes, Certificate, Resume Tips, & More!</li>
+                </ul>
+
+                <a href="https://forms.gle/9ni8kyV8VuGZyHqe6" class="cta-button" style="background: #22D3EE; color: #ffffff; padding: 14px 36px; font-size: 1.1em; border-radius: 50px;
+         font-weight: bold; text-decoration: none; box-shadow: 0 6px 18px rgba(34, 211, 238, 0.4);
+         transition: all 0.3s ease;">
+                    ✅ Reserve My Spot Now
+                </a>
+            </div>
+
+            <!-- Right: Image -->
+            <div style="flex: 1; text-align: center; min-width: 300px;">
+                <img src="C:\Users\Asus\OneDrive\Desktop\wesbite\images\starter pack.png" alt="Tech Bootcamp" style="
+        width: 100%;
+        max-width: 500px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer
+        style="background: linear-gradient(to right, #0f172a, #1e3a8a); color: #ffffff; font-family: 'Roboto', sans-serif; padding: 60px 20px 30px;">
+
+        <div
+            style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start;">
+
+            <!-- 🎓 About NexoraHub -->
+            <div style="flex: 1 1 280px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">🎓 NexoraHub</h3>
+                <p style="font-size: 1.05em; line-height: 1.7;">
+                    Your gateway to future tech careers. Learn from experts, build real projects, and get
+                    placement-ready with practical tech skills.
+                </p>
+            </div>
+
+            <!-- 📈 Placement Highlights -->
+            <div style="flex: 1 1 220px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📈 Placement Highlights</h3>
+                <!---- <ul style="list-style: none; padding: 0; font-size: 1.05em; line-height: 2;">
+                    <li>✅ 0+ Students Placed</li>
+                    <li>🎯 0% Success Rate</li>
+                    <li>💼 MNC & Startups</li>-->
+                <li>📜 Industry Certification</li>
+                </ul>
+            </div>
+
+            <!-- 📞 Contact Info -->
+            <div style="flex: 1 1 200px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📞 Contact Us</h3>
+                <p style="margin: 10px 0;">📱 <strong>Phone:</strong><br>8074097330 / 7286842779</p>
+                <p>📧 <strong>Email:</strong><br><a href="mailto:nexorahub2025@gmail.com"
+                        style="color: #f3f4f6; text-decoration: none;">nexorahub2025@gmail.com</a></p>
+            </div>
+
+            <!-- 📲 Social Media -->
+            <div style="flex: 1 1 180px;">
+                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📲 Follow Us</h3>
+                <a href="https://www.instagram.com/_nexorahub_/profilecard/?igsh=YWN1MWJiNGEzbDA2" target="_blank"
+                    style="display: block; margin-bottom: 8px; color: #f9fafb; text-decoration: none;">📷 Instagram</a>
+                <a href="https://youtube.com/@knowledge_knocks1?si=oEB4-2BWYy8uxoKK" target="_blank"
+                    style="display: block; margin-bottom: 8px; color: #f9fafb; text-decoration: none;">▶️ YouTube</a>
+            </div>
+
+        </div>
+
+        <!-- 👇 Divider -->
+        <div
+            style="border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; text-align: center; color: #cbd5e1; font-size: 0.95em;">
+            &copy; 2025 <strong>NexoraHub</strong> | Learn. Build. Grow. 🚀
+        </div>
+
+    </footer>
+
+
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("show");
+        }
+
+        document.querySelectorAll('section, .course-card').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>
