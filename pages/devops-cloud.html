@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevOps & Cloud Basics - NexoraHub</title>
+    <title>Git & GitHub Essentials - NexoraHub</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <style>
         * {
@@ -91,14 +91,6 @@
 
         .timeline-item {
             margin-bottom: 40px;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.6s ease;
-        }
-
-        .timeline-item.active {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .timeline-content {
@@ -107,6 +99,11 @@
             border-left: 6px solid #3B82F6;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
         }
 
         .timeline-content h4 {
@@ -182,12 +179,11 @@
             max-width: 280px;
             width: 100%;
             border-top: 5px solid #22D3EE;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .enroll-box:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
         }
 
         .enroll-box h4 {
@@ -201,7 +197,7 @@
 
         footer {
             background: linear-gradient(to right, #0f172a, #1e3a8a);
-            color: white;
+            color: #ffffff;
             padding: 60px 20px 30px;
             font-family: 'Roboto', sans-serif;
         }
@@ -256,9 +252,9 @@
 
     <!-- Header -->
     <header>
-        <h2>DevOps & Cloud Basics</h2>
-        <p>Learn the foundations of DevOps, CI/CD, Docker, and Cloud Platforms like AWS to streamline development and
-            deployment.</p>
+        <h2>Git & GitHub Essentials</h2>
+        <p>Master version control with Git and GitHub. Learn branching, merging, pull requests, and collaborative
+            workflows for modern development.</p>
         <a href="https://forms.gle/6HzSEGUuzdB5tBwP9" class="enroll-button">Enroll Now</a>
     </header>
 
@@ -266,11 +262,11 @@
     <section class="section" id="overview">
         <h3>Course Overview</h3>
         <p>
-            The <strong>DevOps & Cloud Basics</strong> course introduces you to modern software development and
-            deployment practices.
-            Learn DevOps fundamentals, version control, CI/CD pipelines, Docker containerization, and cloud services
-            like AWS.
-            Perfect for beginners aiming to understand real-world application development and deployment.
+            The <strong>Git & GitHub Essentials</strong> course is designed to give beginners and developers a strong
+            foundation in version control.
+            Learn how to track changes, collaborate with others, and manage code efficiently using Git and GitHub.
+            This hands-on course includes real-world workflows, branching strategies, pull requests, and team
+            collaboration best practices.
         </p>
     </section>
 
@@ -280,51 +276,51 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h4>Week 1–2: DevOps Foundations</h4>
+                    <h4>📝 Week 1: Introduction to Version Control</h4>
                     <ul>
-                        <li>What is DevOps? Principles & Benefits</li>
-                        <li>Agile vs DevOps</li>
-                        <li>Software Development Lifecycle (SDLC)</li>
+                        <li>Why Version Control?</li>
+                        <li>Installing Git & Setup</li>
+                        <li>Basic Commands: init, clone, add, commit</li>
                     </ul>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h4>Week 3: Version Control with Git</h4>
+                    <h4>🔀 Week 2: Branching & Merging</h4>
                     <ul>
-                        <li>Git Basics & GitHub Setup</li>
-                        <li>Branching, Merging, Pull Requests</li>
-                        <li>Collaborative Workflows</li>
+                        <li>Branches, HEAD, Revert, Reset</li>
+                        <li>Merge Conflicts</li>
+                        <li>Git Log & Aliases</li>
                     </ul>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h4>Week 4–5: CI/CD Pipelines</h4>
+                    <h4>🌐 Week 3: GitHub Basics</h4>
                     <ul>
-                        <li>Introduction to CI/CD Concepts</li>
-                        <li>Tools: Jenkins, GitHub Actions</li>
-                        <li>Automating Tests and Deployments</li>
+                        <li>Repositories: Create & Clone</li>
+                        <li>Push & Pull Workflow</li>
+                        <li>Pull Requests</li>
                     </ul>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h4>Week 6: Containerization with Docker</h4>
+                    <h4>🤝 Week 4: Team Collaboration</h4>
                     <ul>
-                        <li>What is Docker & Why Use It?</li>
-                        <li>Building and Running Containers</li>
-                        <li>Docker Compose & DockerHub</li>
+                        <li>Forking & Contributing</li>
+                        <li>Issues & Projects</li>
+                        <li>GitHub Actions (Intro)</li>
                     </ul>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h4>Week 7–8: Introduction to Cloud & Final Project</h4>
+                    <h4>🚀 Week 5: Capstone Project</h4>
                     <ul>
-                        <li>Basics of AWS (EC2, S3, IAM)</li>
-                        <li>Deploying Apps to Cloud</li>
-                        <li>Capstone Project + Career Guidance</li>
+                        <li>Team Project with Git & GitHub</li>
+                        <li>Real-world Collaboration Simulation</li>
+                        <li>Certificate & Interview Prep</li>
                     </ul>
                 </div>
             </div>
@@ -333,39 +329,38 @@
 
     <!-- Why Enroll -->
     <section class="why-enroll">
-        <h2>🚀 Why Enroll in This Course?</h2>
-        <p class="section-subtitle">Thousands of students have chosen NexoraHub to kickstart their tech careers — here's
-            why:</p>
+        <h2>🚀 Why Enroll?</h2>
+        <p>Thousands of students choose NexoraHub to kickstart their tech careers — here's why:</p>
         <div class="enroll-cards">
             <div class="enroll-box">
                 <div class="icon">👶</div>
                 <h4>Beginner Friendly</h4>
-                <p>No coding experience? No problem! We teach from scratch, step-by-step.</p>
+                <p>Learn version control from scratch step-by-step.</p>
             </div>
             <div class="enroll-box">
                 <div class="icon">🎥</div>
                 <h4>Live + Recorded Classes</h4>
-                <p>Attend live sessions and revisit recordings anytime, anywhere.</p>
+                <p>Access live sessions and recordings anytime.</p>
             </div>
             <div class="enroll-box">
                 <div class="icon">💻</div>
                 <h4>Hands-on Projects</h4>
-                <p>Build real-world projects to strengthen your resume & portfolio.</p>
+                <p>Practice with real-world Git & GitHub projects.</p>
             </div>
             <div class="enroll-box">
                 <div class="icon">📜</div>
                 <h4>Course Completion Certificate</h4>
-                <p>Get a certificate after successful completion of the course.</p>
+                <p>Get certified after completing the course.</p>
             </div>
             <div class="enroll-box">
                 <div class="icon">🧑‍🏫</div>
                 <h4>Expert Mentors</h4>
-                <p>Get guidance from industry professionals and doubt-solving support.</p>
+                <p>Guidance from industry professionals.</p>
             </div>
             <div class="enroll-box">
                 <div class="icon">💼</div>
                 <h4>Placement Support</h4>
-                <p>We help with resume building, mock interviews & job referrals.</p>
+                <p>Resume building, mock interviews & job referrals.</p>
             </div>
         </div>
     </section>
@@ -377,7 +372,7 @@
             <div class="stat-label">Students Enrolled</div>
         </div>
         <div>
-            <div class="stat counter" data-target="350">0</div>
+            <div class="stat counter" data-target="300">0</div>
             <div class="stat-label">Certificates Issued</div>
         </div>
         <div>
@@ -389,33 +384,30 @@
     <!-- Enroll -->
     <section class="section" id="enroll">
         <h3>Get Started Today</h3>
-        <p>Join the upcoming batch and launch your career in tech.</p>
-        <a href="https://forms.gle/6HzSEGUuzdB5tBwP9" class="enroll-button">Enroll Now</a>
+        <p>Join the upcoming batch and master Git & GitHub for modern development.</p>
+        <a href="https://forms.gle/YqhtvkcJvzY4V3xy9" class="enroll-button">Enroll Now</a>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div
-            style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start;">
-            <div style="flex: 1 1 280px;">
+        <div style="max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;">
+            <div style="flex:1 1 280px;">
                 <h3>🎓 NexoraHub</h3>
-                <p>Your gateway to future tech careers. Learn from experts, build real projects, and get placement-ready
-                    with practical tech skills.</p>
+                <p>Learn from experts, build real projects, and get placement-ready with practical skills.</p>
             </div>
-            <div style="flex: 1 1 220px;">
+            <div style="flex:1 1 220px;">
                 <h3>📈 Placement Highlights</h3>
-                <ul style="list-style: none; padding: 0; font-size: 1em; line-height: 2;">
+                <ul style="list-style:none;padding:0;font-size:1.05em;line-height:2;">
                     <li>📜 Industry Certification</li>
-                    <li>💼 Internship & Job Assistance</li>
                 </ul>
             </div>
-            <div style="flex: 1 1 200px;">
+            <div style="flex:1 1 200px;">
                 <h3>📞 Contact Us</h3>
                 <p>📱 <strong>Phone:</strong><br>8074097330 / 7286842779</p>
                 <p>📧 <strong>Email:</strong><br><a href="mailto:nexorahub2025@gmail.com">nexorahub2025@gmail.com</a>
                 </p>
             </div>
-            <div style="flex: 1 1 180px;">
+            <div style="flex:1 1 180px;">
                 <h3>📲 Follow Us</h3>
                 <a href="https://www.instagram.com/_nexorahub_/profilecard/?igsh=YWN1MWJiNGEzbDA2" target="_blank">📷
                     Instagram</a>
@@ -423,14 +415,13 @@
             </div>
         </div>
         <div
-            style="border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; text-align: center; color: #cbd5e1; font-size: 0.95em;">
+            style="border-top:1px solid #334155;margin-top:40px;padding-top:20px;text-align:center;color:#cbd5e1;font-size:0.95em;">
             &copy; 2025 <strong>NexoraHub</strong> | Learn. Build. Grow. 🚀
         </div>
     </footer>
 
-    <!-- JS -->
+    <!-- JavaScript -->
     <script>
-        // Counter animation
         const counters = document.querySelectorAll('.counter');
         const speed = 200;
         const animateCounters = () => {
@@ -449,7 +440,6 @@
                 updateCount();
             });
         };
-
         const statsSection = document.querySelector('.stats');
         if (statsSection) {
             const observer = new IntersectionObserver(entries => {
@@ -462,18 +452,8 @@
             }, { threshold: 0.4 });
             observer.observe(statsSection);
         }
-
-        // Timeline scroll animation
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const timelineObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.2 });
-        timelineItems.forEach(item => timelineObserver.observe(item));
     </script>
+
 </body>
 
 </html>
