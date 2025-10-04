@@ -1,468 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NexoraHub - IT Courses</title>
-  <style>
-    /* ---------- BASE ---------- */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #021c3d, #010a1c 80%);
-      color: #fff;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NexoraHub - IT Courses</title>
+    <style>
+        /* Global Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
-    h1, h2, h3, p {
-      margin: 0;
-    }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #021c3d, #010a1c 80%);
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-    /* ---------- NAVBAR ---------- */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 25px;
-      background: rgba(10, 25, 60, 0.85);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: background 0.3s ease;
-    }
+        /* Header / Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(10, 25, 60, 0.8);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .logo img {
-      height: 45px;
-    }
+        nav .logo img {
+            height: 50px;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 35px;
-      margin: 0;
-      padding: 0;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
 
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-    nav ul li a:hover {
-      color: #00d4ff;
-    }
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
 
-    /* ---------- HAMBURGER ---------- */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-      z-index: 1001;
-    }
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
 
-    .menu-toggle div {
-      width: 28px;
-      height: 3px;
-      background-color: #fff;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+        }
 
-    .menu-toggle.open div:nth-child(1) {
-      transform: rotate(45deg) translateY(8px);
-    }
-    .menu-toggle.open div:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.open div:nth-child(3) {
-      transform: rotate(-45deg) translateY(-8px);
-    }
+        nav ul.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 65px;
+            right: 40px;
+            background: rgba(10, 25, 60, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-    /* ---------- HERO ---------- */
-    .hero {
-      padding: 160px 20px 100px;
-      text-align: center;
-      background: radial-gradient(ellipse at bottom, rgba(0, 140, 255, 0.15), transparent 60%);
-    }
+        /* Hero Section */
+        .hero {
+            padding: 180px 20px 120px;
+            text-align: center;
+            background: radial-gradient(ellipse at bottom, rgba(0, 140, 255, 0.2), transparent 60%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .hero h1 {
-      font-size: 3.2rem;
-      line-height: 1.2;
-    }
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.2;
+        }
 
-    .hero h1 span {
-      color: #00d4ff;
-    }
+        .hero h1 span {
+            color: #00d4ff;
+        }
 
-    .hero p {
-      max-width: 650px;
-      margin: 15px auto 0;
-      font-size: 1.1rem;
-      opacity: 0.8;
-    }
+        .hero p {
+            max-width: 650px;
+            margin: 15px auto;
+            font-size: 18px;
+            opacity: 0.8;
+        }
 
-    /* ---------- SECTIONS ---------- */
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
+        /* Sections */
+        .about,
+        .section,
+        .contact {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            text-align: center;
+        }
 
-    .about,
-    .contact {
-      background: rgba(255, 255, 255, 0.02);
-    }
+        h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #00d4ff;
+        }
 
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 35px;
-      color: #00d4ff;
-    }
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
 
-    .about-content,
-    .card-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        .about-card,
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-    .card,
-    .about-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 25px 20px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.15);
-      text-decoration: none;
-      color: #fff;
-    }
+        .about-card:hover,
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.25);
+        }
 
-    .card:hover,
-    .about-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.25);
-    }
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
 
-    .card-icon {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
 
-    .card h3 {
-      color: #00d4ff;
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-    }
+        .card h3 {
+            margin: 10px 0;
+            color: #00d4ff;
+        }
 
-    .card p {
-      font-size: 0.95rem;
-      opacity: 0.85;
-    }
+        .card p {
+            font-size: 15px;
+            opacity: 0.85;
+        }
 
-    /* ---------- CONTACT ---------- */
-    .contact-details {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
 
-    .contact-details div {
-      line-height: 1.8;
-      min-width: 180px;
-    }
+        .contact-details div {
+            min-width: 200px;
+            line-height: 2;
+        }
 
-    .contact-details span {
-      color: #00d4ff;
-      font-weight: 600;
-    }
+        .contact-details div span {
+            font-weight: bold;
+            color: #00d4ff;
+        }
 
-    form {
-      max-width: 480px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        .contact form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    input,
-    textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      font-size: 15px;
-    }
+        .contact input,
+        .contact textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
 
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #008cff, #00d4ff);
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+        .contact button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #008cff, #00d4ff);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
 
-    button:hover {
-      transform: scale(1.05);
-    }
+        .contact button:hover {
+            transform: scale(1.05);
+        }
 
-    /* ---------- FOOTER ---------- */
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 15px 25px;
-      background: rgba(255, 255, 255, 0.03);
-      font-size: 13px;
-    }
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    footer img {
-      height: 35px;
-    }
+        footer .footer-logo img {
+            height: 40px;
+        }
 
-    footer .footer-title {
-      color: #00d4ff;
-    }
+        footer .footer-title {
+            font-weight: 600;
+            color: #00d4ff;
+        }
 
-    /* ---------- SCROLL REVEAL ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
 
-    /* ---------- MEDIA QUERIES ---------- */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* Tablets */
-    @media (max-width: 1024px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      nav ul {
-        gap: 25px;
-      }
-    }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
 
-    /* Mobiles */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
 
-      nav ul {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        background: rgba(5, 15, 35, 0.95);
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.4s ease;
-      }
+            nav ul {
+                display: none;
+            }
 
-      nav ul.active {
-        max-height: 400px;
-        padding: 15px 0;
-      }
+            .hamburger {
+                display: flex;
+            }
 
-      nav ul li {
-        padding: 10px 0;
-      }
+            nav ul.active {
+                top: 60px;
+                right: 20px;
+            }
 
-      .hero {
-        padding: 130px 15px 80px;
-      }
+            .hero h1 {
+                font-size: 36px;
+            }
 
-      .hero h1 {
-        font-size: 2rem;
-      }
+            .about,
+            .section,
+            .contact {
+                padding: 80px 15px;
+            }
 
-      .hero p {
-        font-size: 1rem;
-      }
+            .contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
 
-      h2 {
-        font-size: 1.8rem;
-      }
+            .contact-details div {
+                text-align: center;
+            }
 
-      .card-icon {
-        font-size: 2.5rem;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-    }
-
-    /* Small Phones */
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .hero p {
-        font-size: 0.9rem;
-      }
-      .card,
-      .about-card {
-        padding: 20px 15px;
-      }
-    }
-  </style>
+            footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Header -->
+    <nav>
+        <div class="logo">
+            <a href="#home"><img src="images/ICON.png" alt="NexoraHub Logo"></a>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">
-      <a href="#home"><img src="images/ICON.png" alt="NexoraHub Logo"></a>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to <span>NexoraHub</span></h1>
+        <p>Learn industry-ready IT courses with real projects, internships, and placement support.</p>
+    </section>
 
-    <div class="menu-toggle" id="menu-toggle">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <!-- About -->
+    <section class="about reveal" id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <h3>🎯 Our Mission</h3>
+                <p>To empower students with cutting-edge IT skills, practical knowledge, and real-world projects that
+                    prepare them for the global job market.</p>
+            </div>
+            <div class="about-card">
+                <h3>🌍 Our Vision</h3>
+                <p>To become a leading IT education platform that transforms learners into industry professionals and
+                    future innovators worldwide.</p>
+            </div>
+            <div class="about-card">
+                <h3>💡 Why Choose Us</h3>
+                <p>Hands-on training, internships, placement support, and a vibrant community that ensures your growth
+                    from learner to leader.</p>
+            </div>
+        </div>
+    </section>
 
-    <ul id="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- Courses -->
+    <section class="section reveal" id="courses">
+        <h2>Our Courses</h2>
+        <div class="card-list">
+            <a href="pages/web-development.html" class="card reveal">
+                <div class="card-icon">🖥️</div>
+                <h3>Web Development</h3>
+            </a>
+            <a href="pages/java-fullstack.html" class="card reveal">
+                <div class="card-icon">☕</div>
+                <h3>Java Full Stack</h3>
+            </a>
+            <a href="pages/python-fullstack.html" class="card reveal">
+                <div class="card-icon">🐍</div>
+                <h3>Python Full Stack</h3>
+            </a>
+            <a href="pages/devops-cloud.html" class="card reveal">
+                <div class="card-icon">⚙️</div>
+                <h3>DevOps</h3>
+            </a>
+            <a href="pages/git-github.html" class="card reveal">
+                <div class="card-icon">🐙</div>
+                <h3>GitHub</h3>
+            </a>
+            <a href="pages/ai.html" class="card reveal">
+                <div class="card-icon">🤖</div>
+                <h3>AI</h3>
+            </a>
+            <a href="pages/data-science.html" class="card reveal">
+                <div class="card-icon">📊</div>
+                <h3>Data Science</h3>
+            </a>
+        </div>
+    </section>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <h1>Welcome to <span>NexoraHub</span></h1>
-    <p>Learn industry-ready IT courses with real projects, internships, and placement support.</p>
-  </section>
+    <!-- Events -->
+    <section class="section reveal" id="events">
+        <h2>Upcoming Events</h2>
+        <div class="card-list">
+            <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="card reveal">
+                <div class="card-icon">🖥️</div>
+                <h3>Web Development Workshop</h3>
+                <p>Hands-on 2-day workshop on building modern responsive websites using HTML, CSS, and JS.</p>
+            </a>
+            <a href="https://forms.gle/CsJAhSU6jMzVcruP7" target="_blank" class="card reveal">
+                <div class="card-icon">🤖</div>
+                <h3>AI & Machine Learning Seminar</h3>
+                <p>Learn the fundamentals of AI and ML with real-world examples and projects.</p>
+            </a>
+            <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="card reveal">
+                <div class="card-icon">💻</div>
+                <h3>Full Stack Hackathon</h3>
+                <p>Collaborate with peers to build complete web applications in 24 hours and showcase your skills.</p>
+            </a>
+            <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="card reveal">
+                <div class="card-icon">📊</div>
+                <h3>Data Analysis Bootcamp</h3>
+                <p>Intensive 3-day bootcamp to master Excel, Power BI, and Python for data analysis projects.</p>
+            </a>
+        </div>
+    </section>
 
-  <!-- About -->
-  <section class="about reveal" id="about">
-    <h2>About Us</h2>
-    <div class="about-content">
-      <div class="about-card">
-        <h3>🎯 Our Mission</h3>
-        <p>Empowering students with practical IT skills and real-world experience.</p>
-      </div>
-      <div class="about-card">
-        <h3>🌍 Our Vision</h3>
-        <p>To become a global IT education leader creating future innovators.</p>
-      </div>
-      <div class="about-card">
-        <h3>💡 Why Choose Us</h3>
-        <p>Hands-on learning, internships, and community support to help you grow.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Contact -->
+    <section class="contact reveal" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-details">
+            <div><span>Email:</span> nexoraacademy@gmail.com</div>
+            <div><span>Phone:</span> +91 8074097330</div>
+            <div><span>WhatsApp:</span> +91 8074097330</div>
+            <div><span>Instagram:</span> @nexorahub</div>
+            <div><span>YouTube:</span> knowledgeknocks</div>
+        </div>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-  <!-- Courses -->
-  <section class="section reveal" id="courses">
-    <h2>Our Courses</h2>
-    <div class="card-list">
-      <a href="#" class="card"><div class="card-icon">🖥️</div><h3>Web Development</h3></a>
-      <a href="#" class="card"><div class="card-icon">☕</div><h3>Java Full Stack</h3></a>
-      <a href="#" class="card"><div class="card-icon">🐍</div><h3>Python Full Stack</h3></a>
-      <a href="#" class="card"><div class="card-icon">⚙️</div><h3>DevOps</h3></a>
-      <a href="#" class="card"><div class="card-icon">🐙</div><h3>Git & GitHub</h3></a>
-      <a href="#" class="card"><div class="card-icon">🤖</div><h3>AI & ML</h3></a>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="images/nexorahub-logo.png" alt="NexoraHub Logo">
+        </div>
+        <div class="footer-title">© 2025 NexoraHub. All Rights Reserved.</div>
+    </footer>
 
-  <!-- Events -->
-  <section class="section reveal" id="events">
-    <h2>Upcoming Events</h2>
-    <div class="card-list">
-      <a href="https://forms.gle/CsJAhSU6jMzVcruP7" target="_blank" class="card">
-        <div class="card-icon">🧠</div>
-        <h3>AI Workshop</h3>
-        <p>Explore Machine Learning & AI through hands-on sessions.</p>
-      </a>
-      <a href="#" class="card">
-        <div class="card-icon">💻</div>
-        <h3>Hackathon</h3>
-        <p>Build your project in 24 hours and showcase your coding talent.</p>
-      </a>
-    </div>
-  </section>
+    <!-- Scripts -->
+    <script>
+        // Smooth scroll for internal links
+        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-  <!-- Contact -->
-  <section class="contact reveal" id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-details">
-      <div><span>Email:</span> nexoraacademy@gmail.com</div>
-      <div><span>Phone:</span> +91 8074097330</div>
-      <div><span>Instagram:</span> @nexorahub</div>
-      <div><span>YouTube:</span> knowledgeknocks</div>
-    </div>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+        // Reveal on scroll animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let r of reveals) {
+                const windowHeight = window.innerHeight;
+                const elementTop = r.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    r.classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
 
-  <!-- Footer -->
-  <footer>
-    <img src="https://github.com/nexorahub2025/nexorahub/blob/main/images/ICON.png?raw=true" alt="NexoraHub Logo">
-    <div class="footer-title">© 2025 NexoraHub. All Rights Reserved.</div>
-  </footer>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector("nav ul");
 
-  <!-- Script -->
-  <script>
-    // Scroll animation
-    function revealOnScroll() {
-      document.querySelectorAll(".reveal").forEach(r => {
-        const top = r.getBoundingClientRect().top;
-        if (top < window.innerHeight - 60) r.classList.add("active");
-      });
-    }
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-
-    // Hamburger menu
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      menuToggle.classList.toggle('open');
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('open');
-      });
-    });
-  </script>
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    </script>
 </body>
+
 </html>
-
-
 
