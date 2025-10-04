@@ -15,17 +15,21 @@
         }
 
         body {
-            background: #f9fafb;
+            background: #f4f7fb;
             color: #0f172a;
+            scroll-behavior: smooth;
         }
 
         nav {
             background: #0f172a;
             color: #fff;
-            padding: 20px 40px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav h1 a {
@@ -40,13 +44,18 @@
         }
 
         nav ul li {
-            margin-left: 20px;
+            margin-left: 25px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #22d3ee;
         }
 
         header {
@@ -54,16 +63,61 @@
             color: white;
             padding: 100px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         header h2 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 15px;
+            animation: fadeInDown 1s ease forwards;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 25px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .enroll-button {
+            display: inline-block;
+            background: #22d3ee;
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .enroll-button:hover {
+            background: #0ea5e9;
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section {
@@ -73,89 +127,106 @@
         }
 
         .section h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
             color: #1e3a8a;
+            text-align: center;
         }
 
         .section p {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 20px;
+            text-align: center;
+            color: #374151;
         }
 
+        /* Timeline */
         .timeline {
-            border-left: 4px solid #22D3EE;
-            padding-left: 20px;
+            position: relative;
+            margin: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #22d3ee;
+            transform: translateX(-50%);
         }
 
         .timeline-item {
-            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
         }
 
         .timeline-content {
             background: #fff;
-            padding: 20px;
-            border-left: 6px solid #3B82F6;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
-        .timeline-content h4 {
-            margin-bottom: 10px;
-            color: #0F172A;
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #3B82F6;
+            border-radius: 50%;
+            top: 30px;
+            z-index: 1;
         }
 
-        .timeline-content ul {
-            padding-left: 20px;
-            color: #374151;
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
         }
 
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Stats */
         .stats {
             display: flex;
             justify-content: space-around;
             background: #e0f2fe;
-            padding: 50px 20px;
+            padding: 60px 20px;
             text-align: center;
+            flex-wrap: wrap;
+            gap: 30px;
         }
 
         .stat {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #0f172a;
         }
 
         .stat-label {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #374151;
         }
 
-        .enroll-button {
-            display: inline-block;
-            background: #3b82f6;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .enroll-button:hover {
-            background: #2563eb;
-        }
-
+        /* Why Enroll */
         .why-enroll {
             background: linear-gradient(135deg, #e0f7ff, #ffffff);
             padding: 80px 20px;
             text-align: center;
-        }
-
-        .why-enroll h2 {
-            font-size: 2.5rem;
-            color: #0F172A;
-            margin-bottom: 10px;
         }
 
         .enroll-cards {
@@ -173,44 +244,73 @@
             padding: 30px 25px;
             max-width: 280px;
             width: 100%;
-            border-top: 5px solid #22D3EE;
-            transition: transform 0.3s ease;
+            border-top: 5px solid #22d3ee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .enroll-box:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .enroll-box h4 {
             color: #0f172a;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .enroll-box p {
             color: #374151;
         }
 
+        /* Footer */
         footer {
-            background: #0f172a;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
+            background: linear-gradient(to right, #0f172a, #1e3a8a);
+            color: #ffffff;
+            padding: 60px 20px 30px;
+            font-family: 'Roboto', sans-serif;
         }
 
-        footer h4 {
+        footer h3 {
             color: #22d3ee;
+            margin-bottom: 15px;
         }
 
         footer a {
-            color: #22d3ee;
+            color: #f9fafb;
             text-decoration: none;
+            transition: 0.3s;
         }
 
-        .counter {
-            transition: all 0.3s ease-in-out;
+        footer a:hover {
+            color: #22d3ee;
         }
 
         @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 30px;
+                padding-right: 30px;
+                margin-bottom: 40px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item::after {
+                left: 8px !important;
+            }
+
             .stats {
                 flex-direction: column;
                 gap: 30px;
@@ -219,14 +319,6 @@
             .enroll-cards {
                 flex-direction: column;
                 align-items: center;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin: 10px 0;
             }
         }
     </style>
@@ -243,7 +335,6 @@
             <li><a href="#enroll">Enroll</a></li>
         </ul>
     </nav>
-
 
     <!-- Header -->
     <header>
@@ -263,7 +354,6 @@
             real datasets, and guided mentorship to become a job-ready data analyst or junior data scientist.
         </p>
     </section>
-
 
     <!-- Curriculum -->
     <section class="section" id="curriculum">
@@ -325,8 +415,7 @@
     <!-- Why Enroll -->
     <section class="why-enroll">
         <h2>🚀 Why Enroll in This Course?</h2>
-        <p class="section-subtitle">Thousands of students have chosen NexoraHub to kickstart their tech careers —
-            here's
+        <p class="section-subtitle">Thousands of students have chosen NexoraHub to kickstart their tech careers — here's
             why:</p>
         <div class="enroll-cards">
             <div class="enroll-box">
@@ -365,15 +454,15 @@
     <!-- Stats -->
     <section class="stats">
         <div>
-            <div class="stat counter" data-target="00">0</div>
+            <div class="stat counter" data-target="120">0</div>
             <div class="stat-label">Students Enrolled</div>
         </div>
         <div>
-            <div class="stat counter" data-target="00">0</div>
+            <div class="stat counter" data-target="85">0</div>
             <div class="stat-label">Certificates Issued</div>
         </div>
         <div>
-            <div class="stat counter" data-target="00">0</div>
+            <div class="stat counter" data-target="40">0</div>
             <div class="stat-label">Students Placed</div>
         </div>
     </section>
@@ -386,59 +475,38 @@
     </section>
 
     <!-- Footer -->
-    <footer
-        style="background: linear-gradient(to right, #0f172a, #1e3a8a); color: #ffffff; font-family: 'Roboto', sans-serif; padding: 60px 20px 30px;">
-
+    <footer>
         <div
-            style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start;">
-
-            <!-- 🎓 About NexoraHub -->
-            <div style="flex: 1 1 280px;">
-                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">🎓 NexoraHub</h3>
-                <p style="font-size: 1.05em; line-height: 1.7;">
-                    Your gateway to future tech careers. Learn from experts, build real projects, and get
-                    placement-ready with practical tech skills.
-                </p>
+            style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; align-items:flex-start;">
+            <div style="flex:1 1 280px;">
+                <h3>🎓 NexoraHub</h3>
+                <p>Your gateway to future tech careers. Learn from experts, build real projects, and get placement-ready
+                    with practical tech skills.</p>
             </div>
-
-            <!-- 📈 Placement Highlights -->
-            <div style="flex: 1 1 220px;">
-                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📈 Placement Highlights</h3>
-                <!---- <ul style="list-style: none; padding: 0; font-size: 1.05em; line-height: 2;">
-                    <li>✅ 0+ Students Placed</li>
-                    <li>🎯 0% Success Rate</li>
-                    <li>💼 MNC & Startups</li>-->
-                <li>📜 Industry Certification</li>
+            <div style="flex:1 1 220px;">
+                <h3>📈 Placement Highlights</h3>
+                <ul style="list-style:none; padding:0; font-size:1.05em; line-height:2;">
+                    <li>📜 Industry Certification</li>
                 </ul>
             </div>
-
-            <!-- 📞 Contact Info -->
-            <div style="flex: 1 1 200px;">
-                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📞 Contact Us</h3>
-                <p style="margin: 10px 0;">📱 <strong>Phone:</strong><br>8074097330 / 7286842779</p>
-                <p>📧 <strong>Email:</strong><br><a href="mailto:nexorahub2025@gmail.com"
-                        style="color: #f3f4f6; text-decoration: none;">nexorahub2025@gmail.com</a></p>
+            <div style="flex:1 1 200px;">
+                <h3>📞 Contact Us</h3>
+                <p>📱 <strong>Phone:</strong><br>8074097330 / 7286842779</p>
+                <p>📧 <strong>Email:</strong><br><a href="mailto:nexorahub2025@gmail.com">nexorahub2025@gmail.com</a>
+                </p>
             </div>
-
-            <!-- 📲 Social Media -->
-            <div style="flex: 1 1 180px;">
-                <h3 style="color: #22D3EE; font-size: 1.8em; margin-bottom: 15px;">📲 Follow Us</h3>
-                <a href="https://www.instagram.com/_nexorahub_/profilecard/?igsh=YWN1MWJiNGEzbDA2" target="_blank"
-                    style="display: block; margin-bottom: 8px; color: #f9fafb; text-decoration: none;">📷 Instagram</a>
-                <a href="https://youtube.com/@knowledge_knocks1?si=oEB4-2BWYy8uxoKK" target="_blank"
-                    style="display: block; margin-bottom: 8px; color: #f9fafb; text-decoration: none;">▶️ YouTube</a>
+            <div style="flex:1 1 180px;">
+                <h3>📲 Follow Us</h3>
+                <a href="https://www.instagram.com/_nexorahub_/profilecard/?igsh=YWN1MWJiNGEzbDA2" target="_blank">📷
+                    Instagram</a>
+                <a href="https://youtube.com/@knowledge_knocks1?si=oEB4-2BWYy8uxoKK" target="_blank">▶️ YouTube</a>
             </div>
-
         </div>
-
-        <!-- 👇 Divider -->
         <div
-            style="border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; text-align: center; color: #cbd5e1; font-size: 0.95em;">
+            style="border-top:1px solid #334155; margin-top:40px; padding-top:20px; text-align:center; color:#cbd5e1; font-size:0.95em;">
             &copy; 2025 <strong>NexoraHub</strong> | Learn. Build. Grow. 🚀
         </div>
-
     </footer>
-
 
     <!-- JavaScript -->
     <script>
@@ -450,13 +518,11 @@
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText;
-                    const increment = target / speed;
+                    const increment = Math.ceil(target / speed);
 
                     if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 10);
-                    } else {
-                        counter.innerText = target;
+                        counter.innerText = Math.min(count + increment, target);
+                        setTimeout(updateCount, 20);
                     }
                 };
                 updateCount();
@@ -473,7 +539,6 @@
                     }
                 });
             }, { threshold: 0.4 });
-
             observer.observe(statsSection);
         }
     </script>
